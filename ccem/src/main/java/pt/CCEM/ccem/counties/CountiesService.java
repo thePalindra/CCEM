@@ -1,7 +1,6 @@
-package pt.CCEM.ccem.events;
+package pt.CCEM.ccem.counties;
 
 import com.google.gson.Gson;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -10,12 +9,11 @@ import pt.CCEM.ccem.data.Event;
 import pt.CCEM.ccem.data.Region;
 import pt.CCEM.ccem.data.Space;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 @Service
-public class EventsService {
+public class CountiesService {
 
     private static final Gson gson = new Gson();
 
@@ -24,7 +22,7 @@ public class EventsService {
     private Map<Long, County> counties;
     private Map<Long, Region> regions;
 
-    public EventsService() {
+    public CountiesService() {
         this.events = new TreeMap<>();
         this.spaces = new TreeMap<>();
         this.counties = new TreeMap<>();
@@ -32,7 +30,7 @@ public class EventsService {
     }
 
     public ResponseEntity<String> getAll(Integer page) {
-        return new ResponseEntity<>(gson.toJson(this.events), HttpStatus.OK);
+        return null;
     }
 
     public ResponseEntity<String> getById(Long id) {

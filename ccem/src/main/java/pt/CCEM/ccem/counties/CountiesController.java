@@ -1,4 +1,4 @@
-package pt.CCEM.ccem.events;
+package pt.CCEM.ccem.counties;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -6,38 +6,38 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class EventsController implements EventsAPI{
+public class CountiesController implements CountiesAPI {
 
     @Autowired
-    private EventsService eventsService;
+    private CountiesService countiesService;
 
     @Override
     public ResponseEntity<String> getAll(Integer page) {
-        return this.eventsService.getAll(page);
+        return this.countiesService.getAll(page);
     }
 
     @Override
     public ResponseEntity<String> getById(Long id) {
-        return this.eventsService.getById(id);
+        return this.countiesService.getById(id);
     }
 
     @Override
     public ResponseEntity<String> getAllInRegion(Long id, Integer page) {
-        return this.eventsService.getAllInRegion(id, page);
+        return this.countiesService.getAllInRegion(id, page);
     }
 
     @Override
     public ResponseEntity<String> getAllInCounty(Long id, Integer page) {
-        return this.eventsService.getAllInCounty(id, page);
+        return this.countiesService.getAllInCounty(id, page);
     }
 
     @Override
     public ResponseEntity<String> put(Long id) {
-        return this.eventsService.put(id);
+        return this.countiesService.put(id);
     }
 
     @Override
     public ResponseEntity<String> postOne() {
-        return this.eventsService.postOne();
+        return this.countiesService.postOne();
     }
 }

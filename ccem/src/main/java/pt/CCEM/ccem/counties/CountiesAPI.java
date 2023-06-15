@@ -1,13 +1,13 @@
-package pt.CCEM.ccem.events;
+package pt.CCEM.ccem.counties;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/events")
-public interface EventsAPI {
+@RequestMapping("/counties")
+public interface CountiesAPI {
 
-    @GetMapping("/")
-    ResponseEntity<String> getAll(@RequestParam(required = false) Integer page);
+    @GetMapping("/{page}")
+    ResponseEntity<String> getAll(@PathVariable Integer page);
 
     @GetMapping("/{id}")
     ResponseEntity<String> getById(@PathVariable Long id);
@@ -25,4 +25,6 @@ public interface EventsAPI {
 
     @PostMapping("/")
     ResponseEntity<String> postOne();
+
+
 }
