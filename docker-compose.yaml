@@ -1,0 +1,35 @@
+version: "3.3"
+services:
+    
+    postgres:
+        image: postgis/postgis:15-3.3-alpine
+        container_name: postgres
+        environment:
+            - POSTGRES_USER=ccem
+            - POSTGRES_PASSWORD=!ccem23
+            - POSTGRES_DB=ccem
+        volumes: 
+            - database-data:/var/lib/postgresql/data/
+
+    pgadmin:
+        image: dpage/pgadmin4
+        container_name: pgadmin
+        environment: 
+            - PGADMIN_DEFAULT_EMAIL=ccem@pgadmin.org
+            - PGADMIN_DEFAULT_PASSWORD=!ccem23
+        ports:
+            - '1000:80'
+        volumes: 
+            - pgadmin:/root/.pgadmin
+
+    spring: 
+        build: ./ccem
+        container_name: spring
+        ports:
+            - "8080:8080"
+        depends_on:
+            - postgres
+
+volumes:
+    database-data:
+    pgadmin:
