@@ -9,7 +9,20 @@ import lombok.Builder;
 @AllArgsConstructor
 public class Region {
 
+    private Long id;
     private String name;
-    private Space space;
     private String description;
+    private Space space;
+
+    public String getName() {
+        return this.name;
+    }
+
+    public Space getSpace() {
+        return this.space;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
 }

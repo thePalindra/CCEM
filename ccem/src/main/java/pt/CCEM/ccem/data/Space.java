@@ -8,4 +8,10 @@ import lombok.Builder;
 @Builder
 @AllArgsConstructor
 public class Space {
+
+    private Long id;
+
+    public Long getId() {
+        return this.id;
+    }
 }

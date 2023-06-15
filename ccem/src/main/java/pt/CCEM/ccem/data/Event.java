@@ -1,6 +1,7 @@
 package pt.CCEM.ccem.data;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
@@ -17,26 +18,26 @@ public class Event {
     private TimeScope timeScope;
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public Space getSpace() {
-        return space;
+        return this.space;
     }
 
     public String getTag() {
-        return tag;
+        return this.tag;
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public TimeScope getTimeScope() {
-        return timeScope;
+        return this.timeScope;
     }
 }

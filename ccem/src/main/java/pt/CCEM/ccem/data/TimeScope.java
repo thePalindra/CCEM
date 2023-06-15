@@ -15,10 +15,10 @@ public class TimeScope {
     private Date end;
 
     public Date getStart() {
-        return start;
+        return this.start;
     }
 
     public Date getEnd() {
-        return end;
+        return this.end;
     }
 }
