@@ -1,21 +1,33 @@
 package pt.CCEM.ccem.data;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "events", schema = "public")
 public class Event {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="event_id")
     private Long id;
     private String name;
-    private Space space;
     private String tag;
     private String description;
+
+    @ManyToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "time_scope_id")
     private TimeScope timeScope;
+
+    @ManyToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "space_id")
+    private Space space;
 
     public Long getId() {
         return this.id;

@@ -1,18 +1,30 @@
 package pt.CCEM.ccem.data;
 
-import jakarta.persistence.Entity;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "counties", schema = "public")
 public class County {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="county_id")
     private Long id;
     private String name;
     private String description;
+
+    @ManyToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "space_id")
     private Space space;
+
+    @ManyToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "region_id")
     private Region region;
 
     public Long getId() {

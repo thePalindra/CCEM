@@ -19,20 +19,15 @@ public class EventsService {
 
     private static final Gson gson = new Gson();
 
-    private Map<Long, Event> events;
-    private Map<Long, Space> spaces;
-    private Map<Long, County> counties;
-    private Map<Long, Region> regions;
+    private EventsRepository eventsRepository;
 
-    public EventsService() {
-        this.events = new TreeMap<>();
-        this.spaces = new TreeMap<>();
-        this.counties = new TreeMap<>();
-        this.regions = new TreeMap<>();
+    @Autowired
+    public EventsService(EventsRepository eventsRepository) {
+        this.eventsRepository = eventsRepository;
     }
 
     public ResponseEntity<String> getAll(Integer page) {
-        return new ResponseEntity<>(gson.toJson(this.events), HttpStatus.OK);
+        return new ResponseEntity<>(gson.toJson(this.eventsRepository.findAll()), HttpStatus.OK);
     }
 
     public ResponseEntity<String> getById(Long id) {
@@ -54,11 +49,12 @@ public class EventsService {
     public ResponseEntity<String> postOne() {
         try {
             Event event = Event.builder()
-                    .id(1l)
+                    .name("test")
+                    .description("test")
                     .build();
-            this.events.put(1l, event);
+            this.eventsRepository.save(event);
 
-            return new ResponseEntity<>(gson.toJson(this.events), HttpStatus.OK);
+            return new ResponseEntity<>(gson.toJson(event), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(gson.toJson(e), HttpStatus.BAD_REQUEST);
         }
