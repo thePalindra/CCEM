@@ -29,6 +29,16 @@ services:
             - "8080:8080"
         depends_on:
             - postgres
+        environment:
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/ccem
+            - SPRING_DATASOURCE_USERNAME=ccem
+            - SPRING_DATASOURCE_PASSWORD=!ccem23
+            - SPRING_DATASOURCE_DRIVER-CLASS-NAME=org.postgresql.Driver
+            - SPRING_JPA_DATABASE=POSTGRESQL
+            - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQLDialect
+            - SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL=true
+            - SPRING_JPA_HIBERNATE_DDL_AUTO=none
+            - SPRING_JPA_HIBERNATE_SHOW_SQL=true
 
 volumes:
     database-data:
