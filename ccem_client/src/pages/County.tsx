@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, Container, Typography } from '@mui/material';
+import { Box, Card, CardContent, CardMedia, Container, Typography } from '@mui/material';
 import { useParams } from "react-router-dom";
 
 const example_obj = {
@@ -14,7 +14,6 @@ const example_obj = {
 
 function Event({ event }) {
     const { id, name, description, timescope, photo } = event;
-
     return (
         <Card sx={{ marginBottom: '1rem' }}>
             <CardMedia
@@ -38,29 +37,49 @@ function Event({ event }) {
 
 export default function County() {
     const { county } = useParams();
+
+    const backgroundImage = 'https://www.balealsurfcamp.com/content-files/uploads/2019/11/Baleal-beach-aereal-view-peniche-portugal.jpg';
     return (
         <Container>
-            <div
-                className="p-5 mt-4 text-center bg-image mb-4 rounded"
-                style={{
-                    backgroundImage:
-                        'url(https://www.balealsurfcamp.com/content-files/uploads/2019/11/Baleal-beach-aereal-view-peniche-portugal.jpg)',
+            <Box
+                sx={{
+                    padding: '5rem',
+                    marginTop: '2rem',
+                    marginBottom: '2rem',
+                    textAlign: 'center',
+                    backgroundImage: `url(${backgroundImage})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    borderRadius: '0.5rem',
+                    position: 'relative',
                     height: 400,
                 }}
             >
-                <div className="mask" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
-                    <div className="d-flex justify-content-center align-items-center">
-                        <div className="text-white">
-                            <Typography variant="h1" component="h1" gutterBottom>
-                                {county}
-                            </Typography>
-                            <Typography variant="h4" component="h4" gutterBottom>
-                                Zona Oeste
-                            </Typography>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <Box
+                    sx={{
+                        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        borderRadius: '0.5rem',
+                    }}
+                >
+                    <Box>
+                        <Typography variant="h3" component="h3" color="white" gutterBottom>
+                            {county}
+                        </Typography>
+                        <Typography variant="h4" component="h4" color="white" gutterBottom>
+                            Zona Oeste
+                        </Typography>
+                    </Box>
+                </Box>
+            </Box>
 
             <Event event={example_obj} />
             <Event event={example_obj} />

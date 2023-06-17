@@ -4,7 +4,6 @@ import App from './App.tsx'
 import {
     BrowserRouter,
 } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css"
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import theme from "./theme"
 
