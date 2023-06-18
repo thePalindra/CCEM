@@ -40,6 +40,16 @@ services:
             - SPRING_JPA_HIBERNATE_DDL_AUTO=none
             - SPRING_JPA_HIBERNATE_SHOW_SQL=true
 
+    axum:
+        build: ./rust
+        container_name: axum
+        ports:
+            - "8000:8000"
+        depends_on:
+            - postgres
+        environment:
+            - DATABASE_URL=postgres://ccem:!ccem23@postgres/ccem
+
 volumes:
     database-data:
     pgadmin:
